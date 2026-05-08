@@ -27,3 +27,19 @@ class MenuAbstract(ABC):
     def show_stats(self, stats: List[Dict]) -> int:
         """Returns 0 to return to main_menu"""
         pass
+
+    @abstractmethod
+    def create_deck_menu(self) -> str:
+        pass
+
+    @abstractmethod
+    def add_flashcard_menu(self):
+        pass
+
+    @abstractmethod
+    def remove_flashcard_menu(self):
+        pass
+
+    @abstractmethod
+    def delete_deck_menu(self):
+        pass
