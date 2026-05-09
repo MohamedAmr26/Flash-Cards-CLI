@@ -18,7 +18,7 @@ class ConsoleMenu(MenuAbstract):
         except ValueError:
             return -1
 
-    def choose_deck(self, decks_list: List[Dict]) -> int:
+    def choose_deck(self, decks_list: List[str]) -> int:        
         print("\n========== DECKS ==========")
         if not decks_list:
             print("No decks available.")

@@ -68,17 +68,6 @@ class Stats(StatsAbstract):
         percentages = [s["score"] / s["total"] * 100 for s in sessions if s["total"] > 0]
         return sum(percentages) / len(percentages) if percentages else 0.0
 
-    def get_streak(self, sessions: List[Dict], threshold: float = 0.7) -> int:
-        """Current streak of consecutive sessions at or above threshold."""
-        streak = 0
-        for session in reversed(sessions):
-            if session["total"] == 0:
-                break
-            if session["score"] / session["total"] >= threshold:
-                streak += 1
-            else:
-                break
-        return streak
 
     def show_deck_stats(self, deck_name: str) -> None:
         scores = load(SCORES_FILE)
@@ -90,7 +79,6 @@ class Stats(StatsAbstract):
         sessions = scores[deck_name]
         best    = self.get_best_score(sessions)
         average = self.get_average_score(sessions)
-        streak  = self.get_streak(sessions)
 
         print(f"\n{'='*40}")
         print(f"  📊 Stats for: {deck_name}")
@@ -99,7 +87,6 @@ class Stats(StatsAbstract):
         print(f"  Best score      : {best['score']}/{best['total']} "
               f"({best['score']/best['total']*100:.0f}%)  [{best['date']}]")
         print(f"  Average score   : {average:.1f}%")
-        print(f"  Current streak  : {streak} session(s) above 70%")
         print(f"{'='*40}\n")
 
     def show_all_stats(self) -> None:
@@ -118,14 +105,12 @@ class Stats(StatsAbstract):
                 continue
             average = self.get_average_score(sessions)
             best    = self.get_best_score(sessions)
-            streak  = self.get_streak(sessions)
 
             print(f"\n  🗂  {deck_name}")
             print(f"     Sessions : {len(sessions)}")
             print(f"     Best     : {best['score']}/{best['total']} "
                   f"({best['score']/best['total']*100:.0f}%)")
             print(f"     Average  : {average:.1f}%")
-            print(f"     Streak   : {streak} 🔥" if streak >= 3 else f"     Streak   : {streak}")
 
         print(f"\n{'='*50}\n")
 

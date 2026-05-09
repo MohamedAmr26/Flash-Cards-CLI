@@ -1,8 +1,7 @@
 from typing import List, Dict
 
 from Abstract_Modules.deck_managerABC import DeckManagerAbstract
-from storage import load_decks, save_decks
-
+from Modules.storage import load_decks, save_decks
 
 class DeckManager(DeckManagerAbstract):
     def __init__(self):

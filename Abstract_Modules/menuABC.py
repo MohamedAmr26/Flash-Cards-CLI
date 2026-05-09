@@ -7,7 +7,7 @@ class MenuAbstract(ABC):
         pass
 
     @abstractmethod
-    def choose_deck(self, decks_list: List[Dict]) -> int:
+    def choose_deck(self, decks_list: List[str]) -> int:
         pass
 
     @abstractmethod

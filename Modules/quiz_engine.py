@@ -25,12 +25,15 @@ class QuizEngine(QuizEngineAbstract):
         print(f"\n--- Starting Quiz: {deck_name} ---")
         
         for card in shuffled_cards:
-            user_input = input(f"Question: {card['question']}\nYour Answer: ")
-            if self.evaluate_answer(user_input, card['answer']):
+            question = list(card.keys())[0]
+            answer = card[question]
+
+            user_input = input(f"Question: {question}\nYour Answer: ")
+            if self.evaluate_answer(user_input, answer):
                 print("Correct! ✅")
                 score += 1
             else:
-                print(f"Wrong! ❌ The correct answer was: {card['answer']}")
+                print(f"Wrong! ❌ The correct answer was: {answer}")
 
         end_time = time.time()
         total_time = round(end_time - start_time, 2)

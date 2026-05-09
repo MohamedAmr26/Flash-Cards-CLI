@@ -44,12 +44,11 @@ def main():
 
             result = engine.start_session(deck_name, deck_cards)
             stats.log_result(
-                result["deck"],
+                result["deck_name"],
                 result["score"],
-                result["total"],
+                result["total_questions"],
                 result["time_taken"],
             )
-
         # 2 ── Create a deck
         elif choice == 2:
             deck_name = menu.create_deck_menu()
