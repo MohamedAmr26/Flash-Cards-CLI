@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import os
 
@@ -15,7 +17,7 @@ from Modules.stats        import Stats
 def main():
     menu    = ConsoleMenu()
     decks   = DeckManager()
-    engine  = QuizEngine(menu)
+    engine  = QuizEngine()
     stats   = Stats()
 
     while True:

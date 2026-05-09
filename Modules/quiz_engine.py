@@ -2,7 +2,7 @@ import random
 import time
 from typing import List, Dict
 
-from modules.quiz_engineABC import QuizEngineAbstract 
+from Abstract_Modules.quiz_engineABC import QuizEngineAbstract 
 
 class QuizEngine(QuizEngineAbstract):
     
